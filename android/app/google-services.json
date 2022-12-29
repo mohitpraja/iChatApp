@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1089248932280",
+    "project_id": "ichatapp-c94db",
+    "storage_bucket": "ichatapp-c94db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089248932280:android:a3b4fbb30f5c8308ae1f4d",
+        "android_client_info": {
+          "package_name": "com.example.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089248932280-1vj4d3i056l9kfrc6b8l1qihlhkgor3e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAItLbGyqtEXeROZ_yaT0NoswCJiGLDjwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089248932280-1vj4d3i056l9kfrc6b8l1qihlhkgor3e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
