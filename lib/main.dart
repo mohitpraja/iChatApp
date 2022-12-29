@@ -5,14 +5,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-//this change is done by mohit kumar
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
-//this line added by mohit praja
-//this change is done by demo branch
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
