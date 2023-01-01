@@ -1,8 +1,15 @@
+import 'dart:io';
+import 'package:chatapp/core/global.dart';
+import 'package:chatapp/core/model/chat_user.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfileController extends GetxController {
-  List user = Get.arguments;
+  
+  ChatUser user = Get.arguments;
+  RxString imagePath=''.obs;
+  final ImagePicker picker=ImagePicker();
   showBottomSheet() {
     Get.bottomSheet(
       SizedBox(
@@ -36,7 +43,9 @@ class ProfileController extends GetxController {
                       Text('Gallery'),
                     ],
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    choosePic(ImageSource.gallery);
+                  },
                 ),
                 const SizedBox(
                   width: 60,
@@ -55,7 +64,9 @@ class ProfileController extends GetxController {
                       Text('Camera')
                     ],
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    choosePic(ImageSource.camera);
+                  },
                 ),
               ],
             ),
@@ -65,8 +76,34 @@ class ProfileController extends GetxController {
       backgroundColor: Colors.white,
       elevation: 0,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(20),
       ),
     );
   }
+
+ final formkey=GlobalKey<FormState>();
+ isValid(val,msg){
+    if(val==null||val.isEmpty){
+      return msg;
+    }
+    return null;
+
+ }
+  formValid(){
+    if(formkey.currentState!.validate()){
+      return true;
+    }
+  }
+  choosePic(src) async {
+   final XFile? img=await picker.pickImage(source:src,imageQuality: 80);
+   if(img!=null){
+    imagePath.value=img.path;
+    APIs.uploadImage(File(imagePath.value));
+    Get.back();
+   }
+
+
+  }
+ 
+  
 }

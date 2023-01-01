@@ -1,4 +1,5 @@
 import 'package:chatapp/core/routes.dart';
+import 'package:chatapp/features/chatscreen/chatscreen_view.dart';
 import 'package:chatapp/features/home/home_bind.dart';
 import 'package:chatapp/features/home/home_view.dart';
 import 'package:chatapp/features/login/login_bind.dart';
@@ -7,6 +8,7 @@ import 'package:chatapp/features/splash/splash_bind.dart';
 import 'package:chatapp/features/splash/splash_view.dart';
 import 'package:get/get.dart';
 
+import '../features/chatscreen/chatscreen_bind.dart';
 import '../features/profile/profile_bind.dart';
 import '../features/profile/profile_view.dart';
 
@@ -30,5 +32,10 @@ List<GetPage> allpage=[
     name: Routes.profile,
     page:() => ProfilePage(),
     binding: ProfileBinding()
+  ),
+  GetPage(
+    name: Routes.chatscreen,
+    page:() => ChatScreenPage(),
+    binding: ChatScreenBinding()
   ),
 ];

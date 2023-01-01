@@ -10,25 +10,24 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
+ 
   bool isInternet = true;
   googleSignIn(context) async {
     if (await InternetConnectionChecker().hasConnection) {
       Loader.showLoader(context);
       _signInWithGoogle().then((user) async {
         Navigator.pop(context);
-        if (user != null) {
-          if ((await APIs.checkUser())) {
-            log('user:${user.user}');
-            var pref = await SharedPreferences.getInstance();
-            await pref.setBool('islogin', true);
-            log('add info:${user.additionalUserInfo}');
-            Get.offAllNamed(Routes.home);
-          } else {
-            await APIs.createUser()
-                .then((value) => Get.offAllNamed(Routes.home));
-            var pref = await SharedPreferences.getInstance();
-            await pref.setBool('islogin', true);
-          }
+        if ((await APIs.checkUser())) {
+          log('user:${user.user}');
+          var pref = await SharedPreferences.getInstance();
+          await pref.setBool('islogin', true);
+          log('add info:${user.additionalUserInfo}');
+          Get.offAllNamed(Routes.home);
+        } else {
+          await APIs.createUser()
+              .then((value) => Get.offAllNamed(Routes.home));
+          var pref = await SharedPreferences.getInstance();
+          await pref.setBool('islogin', true);
         }
       });
     } else {
@@ -58,4 +57,5 @@ class LoginController extends GetxController {
     await GoogleSignIn().disconnect();
     FirebaseAuth.instance.signOut();
   }
+ 
 }

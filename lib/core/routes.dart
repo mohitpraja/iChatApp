@@ -3,4 +3,5 @@ class Routes{
   static String splash='/splash_view.dart';
   static String login='/login_view.dart';
   static String profile='/profile_view.dart';
+  static String chatscreen='/chatscreen_view.dart';
 }
